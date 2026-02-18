@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Princess Royal EKTA 👑</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Brush Script MT', cursive;
+    text-align:center;
+    overflow-x:hidden;
+    background:linear-gradient(45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+    background-size:300% 300%;
+    animation:bgmove 6s infinite alternate;
+    color:white;
+}
+
+@keyframes bgmove{
+    0%{background-position:left;}
+    100%{background-position:right;}
+}
+
+/* Sparkle Effect */
+.sparkle{
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+    0%{opacity:0;}
+    50%{opacity:1;}
+    100%{opacity:0;}
+}
+
+/* Floating Animation */
+.float{
+    position:fixed;
+    bottom:-50px;
+    font-size:25px;
+    animation:floatUp 8s linear infinite;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-110vh);}
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    background:white;
+    color:black;
+    cursor:pointer;
+    font-weight:bold;
+    margin:15px;
+}
+
+#letterBox{
+    display:none;
+    background:white;
+    color:black;
+    width:80%;
+    margin:auto;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 20px gold;
+    text-align:left;
+}
+
+.gift-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    padding:20px;
+}
+
+.gift{
+    background:white;
+    color:black;
+    padding:20px;
+    border-radius:15px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.4s;
+}
+
+.gift:hover{
+    transform:scale(1.1);
+}
+
+#finalMessage{
+    display:none;
+    font-size:28px;
+    margin-top:20px;
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0;}
+}
+</style>
+
+<script>
+function openLetter(){
+    document.getElementById("letterBox").style.display="block";
+}
+
+let messages = [
+"You are my best friend 🤍",
+"Without you, I feel incomplete 💕",
+"You make my life brighter 🌟",
+"Your smile is my happiness 😊",
+"I am lucky to have you 🍀",
+"You are my forever person 💖",
+"You understand me like no one else 💫",
+"You are my safe place 🏡",
+"Life is fun because of you 🎉",
+"You are my strength 💪",
+"You are my comfort 🤗",
+"You are my happiness 🎂",
+"You are my biggest blessing 🙏",
+"You are my favorite human ❤️",
+"You make every day special 🌸",
+"You are my sunshine ☀",
+"You are my motivation 🔥",
+"You are my sweet memory 🍫",
+"You are my partner in crime 😜",
+"You are my heart 💓",
+"You are my world 🌍",
+"Happy 22nd Birthday My Princess 👑🎉"
+];
+
+let count = 0;
+
+function openGift(el){
+    if(count < messages.length){
+        el.innerHTML = messages[count];
+        count++;
+    }
+    if(count === messages.length){
+        document.getElementById("finalMessage").style.display="block";
+    }
+}
+
+/* Create Floating Balloons & Hearts */
+function createFloating(symbol){
+    let el = document.createElement("div");
+    el.className="float";
+    el.innerHTML=symbol;
+    el.style.left=Math.random()*100+"vw";
+    el.style.animationDuration=(5+Math.random()*5)+"s";
+    document.body.appendChild(el);
+    setTimeout(()=>{el.remove();},9000);
+}
+
+setInterval(()=>createFloating("🎈"),2000);
+setInterval(()=>createFloating("💖"),2500);
+
+/* Sparkles */
+for(let i=0;i<40;i++){
+    let s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    s.style.animationDelay=Math.random()*2+"s";
+    document.body.appendChild(s);
+}
+</script>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mp3">
+</audio>
+
+<h1>👑 Happy 22nd Birthday Princess Royal EKTA 👑</h1>
+<h2>From 21 → 22 Strong, Beautiful & Royal Years ✨</h2>
+
+<h2>💌 Click the Royal Letter</h2>
+<button onclick="openLetter()">Open My Letter 💌</button>
+
+<div id="letterBox">
+My Dear Princess EKTA 👑💖,<br><br>
+
+Happy Birthday to the most special soul in my life.  
+You are not just my friend… you are my strength, my comfort, my safe place.<br><br>
+
+Your heart is pure.  
+Your love is genuine.  
+Your hardworking and independent nature inspires me every day.<br><br>
+
+As you step into 22, may this year give you happiness, success, peace,  
+and everything your royal heart deserves.<br><br>
+You will always be my Princess Royal. 👑💖
+</div>
+
+<h2>🎁 Tap Each Royal Gift 🎁</h2>
+
+<div class="gift-container">
+<script>
+for(let i=1;i<=22;i++){
+document.write(`<div class="gift" onclick="openGift(this)">🎁 Gift ${i}</div>`);
+}
+</script>
+</div>
+
+<div id="finalMessage">
+🛑 STOP!  
+🎂🎉 HAPPY BIRTHDAY MY PRINCESS 👑  
+✨ May You Shine Forever ✨
+</div>
+
+</body>
+</html>
